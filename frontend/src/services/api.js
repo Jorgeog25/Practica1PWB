@@ -52,8 +52,8 @@ export const productsApi = {
   create: (formData, token) =>
     request('/productos', { method: 'POST', body: formData }, token),
 
-  update: (id, data, token) =>
-    request(`/productos/${id}`, { method: 'PUT', body: JSON.stringify(data) }, token),
+  update: (id, formData, token) =>
+    request(`/productos/${id}`, { method: 'PUT', body: formData }, token),
 
   delete: (id, token) =>
     request(`/productos/${id}`, { method: 'DELETE' }, token),

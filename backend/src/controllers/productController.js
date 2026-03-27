@@ -27,7 +27,9 @@ class ProductController {
   async updateProduct(req, res) {
     try {
       if (req.user.role !== "admin") return res.status(403).json({ error: "Solo admin" });
-      const product = await ProductService.updateProduct(req.params.id, req.body);
+      const updates = { ...req.body };
+      if (req.file) updates.imagen = req.file.filename;
+      const product = await ProductService.updateProduct(req.params.id, updates);
       res.json(product);
     } catch (err) {
       res.status(500).json({ error: 'Error al actualizar producto' });

@@ -49,9 +49,7 @@
     saving = true;
     try {
       if (id) {
-        // PUT no soporta multipart/form-data bien en este backend, enviamos JSON
-        const body = { nombre: formData.get('nombre'), precio: Number(formData.get('precio')), activo: formData.get('activo') === 'true' };
-        await productsApi.update(id, body, authStore.token);
+        await productsApi.update(id, formData, authStore.token);
         toastStore.success('Producto actualizado');
       } else {
         await productsApi.create(formData, authStore.token);

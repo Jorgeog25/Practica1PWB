@@ -1,11 +1,11 @@
 <script>
-  const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+  const STATIC_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3000').replace('/api', '');
 
   let { product, isAdmin, onEdit, onDelete, onSelect } = $props();
 
   const imageUrl = $derived(
     product.imagen
-      ? (product.imagen.startsWith('http') ? product.imagen : `${BASE_URL}/uploads/${product.imagen}`)
+      ? (product.imagen.startsWith('http') ? product.imagen : `${STATIC_URL}/uploads/${product.imagen}`)
       : null
   );
 </script>

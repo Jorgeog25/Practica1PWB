@@ -109,7 +109,7 @@ router.post('/', authJWT, upload.single('imagen'), ProductController.createProdu
  *       200:
  *         description: Producto eliminado
  */
-router.put('/:id', authJWT, ProductController.updateProduct);
+router.put('/:id', authJWT, upload.single('imagen'), ProductController.updateProduct);
 router.delete('/:id', authJWT, ProductController.deleteProduct);
 
 module.exports = router;
